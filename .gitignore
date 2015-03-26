@@ -7,3 +7,19 @@
 /pkg/
 /spec/reports/
 /tmp/
+
+# Vim
+*.swp
+*.swo
+
+# # Backup
+*~
+
+# Mac
+.DS_Store
+
+# RVM
+.rvmrc
+
+# CTAGS
+tags

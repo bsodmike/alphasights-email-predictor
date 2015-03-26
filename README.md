@@ -1,26 +1,8 @@
 # Alphasights::Email::Predictor
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/alphasights/email/predictor`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
-
-## Installation
-
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'alphasights-email-predictor'
-```
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install alphasights-email-predictor
-
 ## Usage
+
+Requires Ruby 2.2.0+
 
 TODO: Write usage instructions here
 

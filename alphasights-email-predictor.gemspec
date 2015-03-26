@@ -1,13 +1,13 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'alphasights/email/predictor/version'
+require 'alphasights/email_predictor/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "alphasights-email-predictor"
-  spec.version       = Alphasights::Email::Predictor::VERSION
+  spec.version       = Alphasights::EmailPredictor::VERSION
   spec.authors       = ["Michael de Silva"]
-  spec.email         = ["michael@mwdesilva.com"]
+  spec.email         = ["michael@inertialbox.com"]
 
   if spec.respond_to?(:metadata)
     spec.metadata['allowed_push_host'] = "TODO: Set to 'http://mygemserver.com' to prevent pushes to rubygems.org, or delete to allow pushes to any server."
@@ -23,6 +23,18 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
+  spec.required_ruby_version = '~> 2.2.0'
   spec.add_development_dependency "bundler", "~> 1.8"
   spec.add_development_dependency "rake", "~> 10.0"
+  spec.add_development_dependency "attr_extras"
+  spec.add_development_dependency "awesome_print"
+  spec.add_development_dependency "byebug"
+  spec.add_development_dependency "pry-byebug"
+  spec.add_development_dependency "rspec"
+  spec.add_development_dependency "mocha"
+  spec.add_development_dependency "guard-bundler"
+  spec.add_development_dependency "guard-rspec"
+  spec.add_development_dependency "terminal-notifier-guard"
+  spec.add_development_dependency "terminal-notifier"
+  spec.add_development_dependency "rb-fsevent"
 end
