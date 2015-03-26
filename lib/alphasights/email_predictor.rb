@@ -12,6 +12,7 @@ module Alphasights
     end
 
     autoload :FindPattern,  'alphasights/email_predictor/find_pattern'
+    autoload :Predictor,    'alphasights/email_predictor/predictor'
     autoload :Rule,         'alphasights/email_predictor/rule'
 
     def self.setup
