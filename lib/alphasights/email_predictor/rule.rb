@@ -23,6 +23,10 @@ module Alphasights
         @collection ||= Collection.new
       end
 
+      def signature
+        @signature
+      end
+
       def conditions
         @conditions
       end
@@ -59,10 +63,12 @@ module Alphasights
             separators.each do |k,v|
               separator_chars << v
               signature_local_parts << signature.split("_#{k}_")
-              sample_local_parts<< extract_local_from_domain(sample).split(v)
+              sample_local_parts << extract_local_from_domain(sample).split(v)
             end
             signature_local_parts.flatten!
             sample_local_parts.flatten!
+
+            raise StandardError, "Unable to split sample, check provided separator" if sample_local_parts.size == 1 && (sample_local_parts.first =~ /\#{v}/).nil?
 
             observation = { signature_local_parts.map(&:to_sym) => sample_local_parts }
 
