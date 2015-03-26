@@ -7,6 +7,65 @@ Requires Ruby 2.2.0+.  Run the examples via `bundle install && ruby run.rb`, to 
 Specs may be run via `rspec` or `guard`, which will monitor files for
 any changes and re-run the spec suite.
 
+Configuration settings need to be provided as follows,
+
+```ruby
+::Alphasights::EmailPredictor.setup do |config|
+  config.patterns = [
+    {
+      example: { first_name_dot_last_name: "john.ferguson@alphasights.com" },
+      separators: { "dot" => '.' }
+    },
+    {
+      example: { first_name_dot_last_initial: "john.f@alphasights.com" },
+      separators: { "dot" => '.' }
+    },
+    {
+      example: { first_initial_dot_last_name: "j.ferguson@alphasights.com" },
+      separators: { "dot" => '.' }
+    },
+    {
+      example: { first_initial_dot_last_initial: "j.f@alphasights.com" },
+      separators: { "dot" => '.' }
+    }
+  ]
+
+  config.advisors = proc {
+    {
+      "John Ferguson" => "john.ferguson@alphasights.com",
+      "Damon Aw" => "damon.aw@alphasights.com",
+      "Linda Li" => "linda.li@alphasights.com",
+      "Larry Page" => "larry.p@google.com",
+      "Sergey Brin" => "s.brin@google.com",
+      "Steve Jobs" => "s.j@apple.com"
+    }
+  }
+end
+```
+
+Notice that the advisors are passed via a `Proc`, as this allows
+fetching the data from an ORM, such as `ActiveRecord` &mdash; in the
+example below, the `#to_hash` method will process the advisor
+information, returning a `Hash` of the same structure as previously
+detailed
+
+```ruby
+::Alphasights::EmailPredictor.setup do |config|
+  config.advisors = proc {
+    ::Advisors.active.to_hash
+  }
+end
+```
+
+## API
+
+The public API consists of a `::predict` class method.  Refer the
+included example `run.rb` for a demonstration
+
+```ruby
+Alphasights::EmailPredictor.predict(name, domain)
+```
+
 ## Design Approach
 
 1. Parsing provided pattern definitions, to create signature based rules
