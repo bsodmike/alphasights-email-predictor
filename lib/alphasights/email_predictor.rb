@@ -11,7 +11,8 @@ module Alphasights
       class UnknownPatternError < Base; end
     end
 
-    autoload :Rule,     'alphasights/email_predictor/rule'
+    autoload :FindPattern,  'alphasights/email_predictor/find_pattern'
+    autoload :Rule,         'alphasights/email_predictor/rule'
 
     def self.setup
       yield(Configuration)
