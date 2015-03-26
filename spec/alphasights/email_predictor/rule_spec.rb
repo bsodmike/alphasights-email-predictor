@@ -68,6 +68,7 @@ describe Alphasights::EmailPredictor::Rule::BuildExpectation do
       end
 
       context 'when provided an invalid sample' do
+        let(:error_klass) { Alphasights::EmailPredictor::Error }
         let(:pattern) {
           {
             example: { first_name_dash_last_name: "john.ferguson@alphasights.com" },
@@ -77,7 +78,7 @@ describe Alphasights::EmailPredictor::Rule::BuildExpectation do
         let(:subject) { described_class.from_pattern pattern }
 
         it 'should raise an exception' do
-          expect { subject }.to raise_exception(StandardError, /check provided separator/)
+          expect { subject }.to raise_exception(error_klass::UnknownPatternError, /check provided separator/)
         end
       end
     end
@@ -87,6 +88,15 @@ end
 
 describe Alphasights::EmailPredictor::Rule do
   let(:predictor) { Alphasights::EmailPredictor }
+  let(:result) {
+    # NOTE hacking in, to clear rules within the collection instance, to
+    # prevent pollution from calls to `described_class.build` from other specs
+    #
+    # Intentionally accessing the instance variable directly, rather than
+    # exposing it via the `Collection` class' API.
+    described_class.collection.instance_variable_set('@rules', [])
+    described_class.build
+  }
 
   before(:each) do
     SpecRunner.run
@@ -94,14 +104,12 @@ describe Alphasights::EmailPredictor::Rule do
 
   describe '::build' do
     it 'should build rules based on patterns provided during configuration' do
-      result = described_class.build
+      expect(result.size).to eq(predictor::Configuration.patterns.size)
+    end
+
+    it 'should return a collection of class `Alphasights::EmailPredictor::Rule`' do
       expect(result.collect(&:class).uniq.size).to eq(1)
       expect(result.collect(&:class).uniq.first).to eq(described_class)
     end
-
-    #it 'should' do
-      #result = described_class.build
-      #expect(result).to eq('')
-    #end
   end
 end

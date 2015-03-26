@@ -6,6 +6,11 @@ module Alphasights
     require 'attr_extras'
     require 'alphasights/email_predictor/configuration'
 
+    module Error
+      class Base < StandardError; end
+      class UnknownPatternError < Base; end
+    end
+
     autoload :Rule,     'alphasights/email_predictor/rule'
 
     def self.setup

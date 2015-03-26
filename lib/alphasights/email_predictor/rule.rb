@@ -68,7 +68,7 @@ module Alphasights
             signature_local_parts.flatten!
             sample_local_parts.flatten!
 
-            raise StandardError, "Unable to split sample, check provided separator" if sample_local_parts.size == 1 && (sample_local_parts.first =~ /\#{v}/).nil?
+            raise Error::UnknownPatternError, "Unable to split sample, check provided separator" if sample_local_parts.size == 1 && (sample_local_parts.first =~ /\#{v}/).nil?
 
             observation = { signature_local_parts.map(&:to_sym) => sample_local_parts }
 
