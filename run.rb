@@ -50,7 +50,7 @@ puts l
 
 __END__
 
-# Example output from concecutive runs
+# Example output from consecutive runs
 
 -> % ruby run.rb
 Peter Wong: peter.wong@alphasights.com

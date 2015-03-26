@@ -3,6 +3,7 @@
 ## Usage
 
 Requires Ruby 2.2.0+.  Run the examples via `bundle install && ruby run.rb`, to predict emails for the test payload.
+
 Specs may be run via `rspec` or `guard`, which will monitor files for
 any changes and re-run the spec suite.
 
@@ -92,7 +93,7 @@ Finished in 0.01495 seconds (files took 0.2058 seconds to load)
 ### Predictions for Test Data
 
 ```
-# Example output from concecutive runs
+# Example output from consecutive runs
 
 -> % ruby run.rb
 Peter Wong: peter.wong@alphasights.com
