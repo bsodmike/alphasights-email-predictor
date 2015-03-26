@@ -12,6 +12,8 @@ module Alphasights
         @conditions = conditions
       end
 
+      attr_accessor :signature, :separators, :conditions
+
       # NOTE Example set of parsed rules
       #
       # [#<Alphasights::EmailPredictor::Rule:0x007f8382c78118
@@ -43,14 +45,6 @@ module Alphasights
 
       def self.collection
         @collection ||= Collection.new
-      end
-
-      def signature
-        @signature
-      end
-
-      def conditions
-        @conditions
       end
 
     end

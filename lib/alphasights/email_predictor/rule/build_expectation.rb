@@ -49,14 +49,14 @@ module Alphasights
 
           rule_set = []
           rule_set << if locals_first.length > 1
-                        { first_key => Regexp.new(/[\w]+/) }
+                        { first_key => Regexp.new(/([\w]{2,})/) }
                       else
-                        { first_key => Regexp.new(/[\w]/) }
+                        { first_key => Regexp.new(/([\w])/) }
                       end
           rule_set << if locals_last.length > 1
-                        { last_key => Regexp.new(/[\w]+/) }
+                        { last_key => Regexp.new(/([\w]{2,})/) }
                       else
-                        { last_key => Regexp.new(/[\w]/) }
+                        { last_key => Regexp.new(/([\w])/) }
                       end
 
           Rule.new(signature.to_sym, @separators, rule_set)

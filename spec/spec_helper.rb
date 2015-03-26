@@ -1,9 +1,9 @@
 $LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
 require 'alphasights/email_predictor'
-require 'mocha/api'
+#require 'mocha/api'
 
 RSpec.configure do |config|
-  config.mock_with :mocha
+  config.mock_with :rspec
   config.run_all_when_everything_filtered = true
   config.filter_run :focus
 

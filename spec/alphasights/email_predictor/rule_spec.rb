@@ -46,7 +46,7 @@ describe Alphasights::EmailPredictor::Rule::BuildExpectation do
       end
 
       it 'should process given patten into following conditions' do
-        expect(subject.conditions).to eq([{:first_initial=>/[\w]/}, {:last_initial=>/[\w]/}])
+        expect(subject.conditions).to eq([{:first_initial=>/([\w])/}, {:last_initial=>/([\w])/}])
       end
 
       context 'when provided an alternative signature format' do
