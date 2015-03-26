@@ -6,6 +6,18 @@ Requires Ruby 2.2.0+
 
 TODO: Write usage instructions here
 
+## Design
+
+1. Parsing provided pattern definitions, to create signature based rules
+   for applying against the local-part of an email address.
+
+2. Fetch sample data matching a particular domain.  For the purposes, of
+   overriding, this gem will implement a 'repo pattern', allowing one to
+   hook into an ORM.
+
+3. Subject sample data to the rule set to determine a potential
+   naming-scheme.
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `bin/console` for an interactive prompt that will allow you to experiment.

@@ -16,5 +16,13 @@ module Alphasights
     def self.setup
       yield(Configuration)
     end
+
+    def self.fetch_advisors
+      o = Configuration.advisors
+      raise Error::Base.new('Advisors need to be provided via a closure, returning a hash of advisor names and email addresses') unless o.is_a?(Proc)
+
+      o.call
+    end
+
   end
 end
